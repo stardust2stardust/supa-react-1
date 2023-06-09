@@ -17,21 +17,27 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
-      <h1>Supa Smoothies</h1>
-      <Link to="/">Home</Link>
-      {user ? (
-        <>
-          <span>Welcome back, {user.email}</span>
+    <nav className="bg-blue-900 text-slate-100 flex flex-col items-center">
+      <h1>CRUD REACT & SUPABASE</h1>
+      <div className="flex gap-10">
+        <div>
+          <Link to="/">Home</Link>
+        </div>
+        <div>
+          {user ? (
+            <>
+              <span>Welcome back, {user.email}</span>
 
-          <button onClick={handleLogout}>Logout</button>
-        </>
-      ) : (
-        <>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
-        </>
-      )}
+              <button onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <div className="flex gap-4">
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* {!auth && <Link to="/login">Login</Link>}
       {!auth && <Link to="/register">Register</Link>}

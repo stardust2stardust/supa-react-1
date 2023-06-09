@@ -9,7 +9,7 @@ import AuthRoute from "./components/AuthRoute";
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Layout>
         <Routes>
           <Route

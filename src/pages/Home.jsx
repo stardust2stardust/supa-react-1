@@ -36,19 +36,29 @@ const Home = () => {
   }, [orderBy]);
 
   return (
-    <div className="page home">
+    <div className="p-8">
       {fetchError && <p>{fetchError}</p>}
       {smoothies && (
-        <div className="smoothies">
-          <div className="order-by">
-            <button onClick={() => setOrderBy("created-at")}>
+        <div className="flex flex-col mt-5 gap-5">
+          <div className="flex gap-3">
+            <button
+              onClick={() => setOrderBy("created-at")}
+              className="bg-pink-600 text-slate-100 px-3 py-1 rounded-lg">
               Time Created
             </button>
-            <button onClick={() => setOrderBy("title")}>Title</button>
-            <button onClick={() => setOrderBy("rating")}>Rating</button>
+            <button
+              onClick={() => setOrderBy("title")}
+              className="bg-pink-600 text-slate-100 px-3 py-1 rounded-lg">
+              Title
+            </button>
+            <button
+              onClick={() => setOrderBy("rating")}
+              className="bg-pink-600 text-slate-100 px-3 py-1 rounded-lg">
+              Rating
+            </button>
           </div>
 
-          <div className="smoothie-grid">
+          <div className="grid grid-cols-3 gap-4">
             {smoothies.map((smoothie) => (
               <SmoothieCard
                 key={smoothie.id}
