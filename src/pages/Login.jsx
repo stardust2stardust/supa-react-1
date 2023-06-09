@@ -33,50 +33,59 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Login</h2>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                ref={emailRef}
-                required
-              />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                ref={passwordRef}
-                required
-              />
-            </Form.Group>
-            {errorMsg && (
-              <Alert
-                variant="danger"
-                onClose={() => setErrorMsg("")}
-                dismissible>
-                {errorMsg}
-              </Alert>
-            )}
-            <div className="text-center mt-2">
-              <Button
-                disabled={loading}
-                type="submit"
-                className="w-50">
-                Login
-              </Button>
-            </div>
-          </Form>
-        </Card.Body>
-        <div className="w-100 text-center mt-2">
-          New User? <Link to={"/register"}>Register</Link>
+    <div className="flex flex-col items-center ">
+      <form
+        onSubmit={handleSubmit}
+        className="border-2 rounded-md flex flex-col gap-6 w-1/2 mt-10 p-4">
+        <div
+          id="email"
+          className="flex flex-col">
+          <label>Email</label>
+          <input
+            type="email"
+            ref={emailRef}
+            required
+            className="border-2 rounded-md"
+          />
         </div>
-      </Card>
-    </>
+        <div
+          id="password"
+          className="flex flex-col">
+          <label>Password</label>
+          <input
+            type="password"
+            ref={passwordRef}
+            required
+            className="border-2 rounded-md"
+          />
+        </div>
+        {errorMsg && (
+          <p
+            variant="danger"
+            onClose={() => setErrorMsg("")}
+            dismissible>
+            {errorMsg}
+          </p>
+        )}
+        <div className="text-center mt-2">
+          <button
+            disabled={loading}
+            type="submit"
+            className="bg-blue-900 text-slate-100 py-1 px-3 rounded-md">
+            Login
+          </button>
+        </div>
+      </form>
+
+      <div className="w-100 text-center mt-2">
+        New User?{" "}
+        <Link
+          to={"/register"}
+          className="text-pink-600">
+          Register
+        </Link>
+      </div>
+    </div>
   );
 };
 

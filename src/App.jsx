@@ -9,7 +9,7 @@ import AuthRoute from "./components/AuthRoute";
 
 function App() {
   return (
-    <div className="">
+    <div className="font-nunito">
       <Layout>
         <Routes>
           <Route
