@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Update from "./pages/Update";
 import AuthRoute from "./components/AuthRoute";
+import Create from "./pages/Create";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
           <Route
             path="/login"
             element={<Login />}
+          />
+          <Route
+            path="/create"
+            element={<Create />}
           />
 
           {/* Protected Routes */}

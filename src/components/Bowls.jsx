@@ -1,45 +1,44 @@
-import Bowls from "../components/Bowls";
-import SmoothieCard from "../components/SmoothieCard";
+import BowlCard from "../components/BowlCard";
 import { supabase } from "../supabase/supabaseClient";
 import { useState, useEffect } from "react";
 
-const Home = () => {
+const Bowls = () => {
   const [fetchError, setFetchError] = useState(null);
-  const [smoothies, setSmoothies] = useState(null);
+  const [bowls, setBowls] = useState(null);
   const [orderBy, setOrderBy] = useState("created_at");
 
   const handleDelete = (id) => {
-    setSmoothies((prevSmoothies) => {
-      return prevSmoothies.filter((sm) => sm.id !== id);
+    setBowls((prevBowls) => {
+      return prevBowls.filter((sm) => sm.id !== id);
     });
   };
 
   useEffect(() => {
-    const fetchSmoothies = async () => {
+    const fetchBowls = async () => {
       const { data, error } = await supabase
-        .from("smoothies")
+        .from("breakfast_bowls")
         .select()
         .order(orderBy, { ascending: false });
 
       if (error) {
-        setFetchError("Could not fetch the smoothies");
+        setFetchError("Could not fetch the bowls");
         console.log("error: ", error);
-        setSmoothies(null);
+        setBowls(null);
       }
 
       if (data) {
-        setSmoothies(data);
+        setBowls(data);
         setFetchError(null);
       }
     };
 
-    fetchSmoothies();
+    fetchBowls();
   }, [orderBy]);
 
   return (
     <div className="p-8">
       {fetchError && <p>{fetchError}</p>}
-      {smoothies && (
+      {bowls && (
         <div className="flex flex-col mt-5 gap-5">
           <div className="flex gap-3">
             <button
@@ -60,19 +59,18 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {smoothies.map((smoothie) => (
-              <SmoothieCard
-                key={smoothie.id}
-                smoothie={smoothie}
+            {bowls.map((bowl) => (
+              <BowlCard
+                key={bowl.id}
+                bowl={bowl}
                 onDelete={handleDelete}
               />
             ))}
           </div>
         </div>
       )}
-      <Bowls />
     </div>
   );
 };
 
-export default Home;
+export default Bowls;

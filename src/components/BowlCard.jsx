@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { supabase } from "../supabase/supabaseClient";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
-const SmoothieCard = ({ smoothie, onDelete }) => {
+const BowlCard = ({ bowl, onDelete }) => {
   const handleDelete = async () => {
-    console.log("smoothie id: ", smoothie.id);
+    console.log("bowl id: ", bowl.id);
     const { data, error } = await supabase
-      .from("smoothies")
+      .from("breakfast_bowls")
       .delete()
-      .eq("id", smoothie.id)
+      .eq("id", bowl.id)
       .select();
 
     if (error) {
@@ -18,17 +18,17 @@ const SmoothieCard = ({ smoothie, onDelete }) => {
 
     if (data) {
       console.log("delete data: ", data);
-      onDelete(smoothie.id);
+      onDelete(bowl.id);
     }
   };
 
   return (
     <div className="border-2 p-3">
-      <h3 className="text-lg font-bold text-blue-900">{smoothie.title}</h3>
-      <p>{smoothie.method}</p>
-      <div className="rating">{smoothie.rating}</div>
+      <h3 className="text-lg font-bold text-blue-900">{bowl.title}</h3>
+      <p>{bowl.method}</p>
+      <div className="rating">{bowl.rating}</div>
       <div className="buttons">
-        <Link to={"/" + smoothie.id}>
+        <Link to={"/" + bowl.id}>
           <PencilIcon className="h-6 w-6 text-blue-500">edit</PencilIcon>
         </Link>
         <TrashIcon
@@ -41,4 +41,4 @@ const SmoothieCard = ({ smoothie, onDelete }) => {
   );
 };
 
-export default SmoothieCard;
+export default BowlCard;
