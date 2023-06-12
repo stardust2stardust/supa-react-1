@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-blue-900 text-slate-100 flex flex-col gap-2 items-center p-4 ">
-      <h1 className="text-xl">CRUD REACT & SUPABASE</h1>
+      <h1 className="text-xl">SUPABOWLS</h1>
       <div className="w-full flex gap-10 justify-between">
         <div className="flex gap-4">
           <div>
@@ -44,10 +44,6 @@ const Navbar = () => {
           )}
         </div>
       </div>
-
-      {/* {!auth && <Link to="/login">Login</Link>}
-      {!auth && <Link to="/register">Register</Link>}
-      {auth && <button onClick={handleLogout}>Logout</button>} */}
     </nav>
   );
 };

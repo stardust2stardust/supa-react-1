@@ -27,6 +27,7 @@ const BowlCard = ({ bowl, onDelete }) => {
       <h3 className="text-lg font-bold text-blue-900">{bowl.title}</h3>
       <p>{bowl.method}</p>
       <div className="rating">{bowl.rating}</div>
+      <div>{bowl.ingredients}</div>
       <div className="buttons">
         <Link to={"/" + bowl.id}>
           <PencilIcon className="h-6 w-6 text-blue-500">edit</PencilIcon>
