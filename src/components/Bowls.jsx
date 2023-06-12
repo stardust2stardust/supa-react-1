@@ -16,7 +16,7 @@ const Bowls = () => {
   useEffect(() => {
     const fetchBowls = async () => {
       const { data, error } = await supabase
-        .from("breakfast_bowls")
+        .from("bowls")
         .select()
         .order(orderBy, { ascending: false });
 
@@ -41,11 +41,11 @@ const Bowls = () => {
       {bowls && (
         <div className="flex flex-col mt-5 gap-5">
           <div className="flex gap-3">
-            <button
+            {/* <button
               onClick={() => setOrderBy("created-at")}
               className="bg-pink-600 text-slate-100 px-3 py-1 rounded-lg">
               Time Created
-            </button>
+            </button> */}
             <button
               onClick={() => setOrderBy("title")}
               className="bg-pink-600 text-slate-100 px-3 py-1 rounded-lg">

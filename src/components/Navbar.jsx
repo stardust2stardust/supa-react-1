@@ -19,22 +19,26 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-900 text-slate-100 flex flex-col gap-2 items-center p-4 ">
       <h1 className="text-xl">SUPABOWLS</h1>
-      <div className="w-full flex gap-10 justify-between">
+      <div className="w-full flex items-center justify-between">
         <div className="flex gap-4">
-          <div>
+          {/* <div>
             <Link to="/">Home</Link>
-          </div>
+          </div> */}
           <div>
-            <Link to="/create">Add Smoothie</Link>
+            <Link to="/create">Add Bowl</Link>
           </div>
         </div>
 
-        <div>
+        <div className="flex gap-3 items-center">
           {user ? (
             <>
-              <span>Welcome back, {user.email}</span>
+              <span>{user.email}</span>
 
-              <button onClick={handleLogout}>Logout</button>
+              <button
+                onClick={handleLogout}
+                className="bg-slate-100 text-slate-900 px-2 py-1 rounded">
+                Logout
+              </button>
             </>
           ) : (
             <div className="flex gap-4">

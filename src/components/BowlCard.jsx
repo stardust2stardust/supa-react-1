@@ -23,20 +23,23 @@ const BowlCard = ({ bowl, onDelete }) => {
   };
 
   return (
-    <div className="border-2 p-3">
-      <h3 className="text-lg font-bold text-blue-900">{bowl.title}</h3>
+    <div className="border-2 p-3 flex flex-col">
+      <h3 className="text-xl font-bold text-blue-900">{bowl.title}</h3>
+      <div className="text-pink-700">{bowl.ingredients.join(", ")}</div>
       <p>{bowl.method}</p>
-      <div className="rating">{bowl.rating}</div>
-      <div>{bowl.ingredients}</div>
-      <div className="buttons">
-        <Link to={"/" + bowl.id}>
-          <PencilIcon className="h-6 w-6 text-blue-500">edit</PencilIcon>
-        </Link>
-        <TrashIcon
-          onClick={handleDelete}
-          className="h-6 w-6 text-blue-500">
-          delete
-        </TrashIcon>
+      <div className="flex justify-between items-center mt-auto">
+        <div className="rating">{bowl.rating}</div>
+
+        <div className="flex items-center gap-2 ">
+          <Link to={"/" + bowl.id}>
+            <PencilIcon className="h-6 w-6 text-blue-900">edit</PencilIcon>
+          </Link>
+          <TrashIcon
+            onClick={handleDelete}
+            className="h-6 w-6 text-blue-900">
+            delete
+          </TrashIcon>
+        </div>
       </div>
     </div>
   );

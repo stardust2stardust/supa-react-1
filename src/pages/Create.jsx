@@ -1,7 +1,4 @@
-import { useState } from "react";
-import { supabase } from "../supabase/supabaseClient";
-import { useNavigate } from "react-router-dom";
-import CreateBreakfastBowl from "../components/createBreakfastBowl";
+import NewBowlForm from "../components/NewBowlForm";
 
 const Create = () => {
   return (
@@ -9,7 +6,7 @@ const Create = () => {
       <h1 className="my-4 text-blue-900 text-2xl font-bold text-center">
         Add a Recipe
       </h1>
-      <CreateBreakfastBowl />
+      <NewBowlForm />
     </div>
   );
 };

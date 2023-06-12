@@ -3,11 +3,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase/supabaseClient";
 
-const CreateBreakfastBowl = () => {
+const NewBowlForm = () => {
   const [title, setTitle] = useState("");
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState([""]);
   const [method, setMethod] = useState("");
   const [rating, setRating] = useState("");
+  const [meal, setMeal] = useState("");
   const [formError, setFormError] = useState("");
 
   const navigate = useNavigate();
@@ -28,18 +29,22 @@ const CreateBreakfastBowl = () => {
     setIngredients(newIngredients);
   };
 
+  const onOptionChange = (e) => {
+    setTopping(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !method || !rating || ingredients.length === 0) {
+    if (!title || !method || !rating || ingredients.length === 0 || !meal) {
       setFormError("Please fill in all of the fields.");
       return;
     }
 
     const { data, error } = await supabase
-      .from("breakfast_bowls")
+      .from("bowls")
       // each object is a row in the table
-      .insert([{ title, ingredients, method, rating }])
+      .insert([{ title, ingredients, method, rating, meal }])
       .select();
 
     if (error) {
@@ -56,7 +61,7 @@ const CreateBreakfastBowl = () => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="mx-auto border-2 border-blue-900 rounded-md w-1/2 flex flex-col gap-4 p-6">
+        className="mx-auto border-2 border-blue-900 rounded-md w-4/5 flex flex-col gap-4 p-6">
         <div className="flex flex-col">
           <label htmlFor="title">Title:</label>
           <input
@@ -67,15 +72,52 @@ const CreateBreakfastBowl = () => {
             className="border-2 rounded-md p-1 px-2"
           />
         </div>
+
+        <div className="flex flex-col">
+          <h2>Select Meal</h2>
+          <div>
+            <input
+              type="radio"
+              name="meal"
+              value="Breakfast"
+              id="breakfast"
+              onChange={onOptionChange}
+            />
+            <label htmlFor="breakfast">Breakfast</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="meal"
+              value="Lunch"
+              id="lunch"
+              onChange={onOptionChange}
+            />
+            <label htmlFor="lunch">Lunch</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="meal"
+              value="Dinner"
+              id="dinner"
+              onChange={onOptionChange}
+            />
+            <label htmlFor="dinner">Dinner</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="meal"
+              value="Dessert"
+              id="dessert"
+              onChange={onOptionChange}
+            />
+            <label htmlFor="breakfast">Dessert</label>
+          </div>
+        </div>
         <div className="flex flex-col">
           <label htmlFor="ingredient">Ingredients:</label>
-          {/* <input
-            type="text"
-            id="title"
-            value={ingredient}
-            onChange={(e) => setTitle(e.target.value)}
-            className="border-2 rounded-md p-1 px-2"
-          /> */}
           {ingredients.map((ingredient, index) => (
             <div key={index}>
               <input
@@ -128,4 +170,4 @@ const CreateBreakfastBowl = () => {
   );
 };
 
-export default CreateBreakfastBowl;
+export default NewBowlForm;
