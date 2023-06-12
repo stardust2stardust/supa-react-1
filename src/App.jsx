@@ -10,7 +10,7 @@ import Create from "./pages/Create";
 
 function App() {
   return (
-    <div className="font-nunito">
+    <div className="font-nunito bg-gray-100 h-screen">
       <Layout>
         <Routes>
           <Route

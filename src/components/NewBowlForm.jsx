@@ -7,7 +7,6 @@ const NewBowlForm = () => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState([""]);
   const [method, setMethod] = useState("");
-  const [rating, setRating] = useState("");
   const [meal, setMeal] = useState("");
   const [formError, setFormError] = useState("");
 
@@ -30,13 +29,13 @@ const NewBowlForm = () => {
   };
 
   const onOptionChange = (e) => {
-    setTopping(e.target.value);
+    setMeal(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !method || !rating || ingredients.length === 0 || !meal) {
+    if (!title || !method || ingredients.length === 0 || !meal) {
       setFormError("Please fill in all of the fields.");
       return;
     }
@@ -44,7 +43,7 @@ const NewBowlForm = () => {
     const { data, error } = await supabase
       .from("bowls")
       // each object is a row in the table
-      .insert([{ title, ingredients, method, rating, meal }])
+      .insert([{ title, ingredients, method, meal }])
       .select();
 
     if (error) {
@@ -116,6 +115,7 @@ const NewBowlForm = () => {
             <label htmlFor="breakfast">Dessert</label>
           </div>
         </div>
+
         <div className="flex flex-col">
           <label htmlFor="ingredient">Ingredients:</label>
           {ingredients.map((ingredient, index) => (
@@ -145,17 +145,6 @@ const NewBowlForm = () => {
             id="method"
             value={method}
             onChange={(e) => setMethod(e.target.value)}
-            className="border-2 rounded-md p-1 px-2"
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="rating">Rating:</label>
-          <input
-            type="number"
-            id="rating"
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
             className="border-2 rounded-md p-1 px-2"
           />
         </div>

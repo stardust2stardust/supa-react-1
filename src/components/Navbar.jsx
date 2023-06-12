@@ -18,8 +18,11 @@ const Navbar = () => {
 
   return (
     <nav className="bg-blue-900 text-slate-100 flex flex-col gap-2 items-center p-4 ">
-      <h1 className="text-xl">SUPABOWLS</h1>
-      <div className="w-full flex items-center justify-between">
+      <Link to="/">
+        <h1 className="text-xl">SUPABOWLS</h1>
+      </Link>
+
+      <div className="w-full flex items-center justify-between sticky top-0">
         <div className="flex gap-4">
           {/* <div>
             <Link to="/">Home</Link>

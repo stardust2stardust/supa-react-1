@@ -27,9 +27,7 @@ const BowlCard = ({ bowl, onDelete }) => {
       <h3 className="text-xl font-bold text-blue-900">{bowl.title}</h3>
       <div className="text-pink-700">{bowl.ingredients.join(", ")}</div>
       <p>{bowl.method}</p>
-      <div className="flex justify-between items-center mt-auto">
-        <div className="rating">{bowl.rating}</div>
-
+      <div className="flex justify-end items-center mt-auto">
         <div className="flex items-center gap-2 ">
           <Link to={"/" + bowl.id}>
             <PencilIcon className="h-6 w-6 text-blue-900">edit</PencilIcon>
