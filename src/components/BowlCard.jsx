@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { supabase } from "../supabase/supabaseClient";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
-const BowlCard = ({ bowl, onDelete }) => {
+const BowlCard = ({ bowl, onDelete, isAuthor }) => {
+  console.log(isAuthor);
   const handleDelete = async () => {
-    console.log("bowl id: ", bowl.id);
     const { data, error } = await supabase
-      .from("breakfast_bowls")
+      .from("bowls")
       .delete()
       .eq("id", bowl.id)
       .select();
@@ -30,11 +30,22 @@ const BowlCard = ({ bowl, onDelete }) => {
       <div className="flex justify-end items-center mt-auto">
         <div className="flex items-center gap-2 ">
           <Link to={"/" + bowl.id}>
-            <PencilIcon className="h-6 w-6 text-blue-900">edit</PencilIcon>
+            <PencilIcon
+              className={
+                isAuthor
+                  ? "h-6 w-6 text-blue-900"
+                  : "h-6 w-6 text-gray-300 cursor-not-allowed"
+              }>
+              edit
+            </PencilIcon>
           </Link>
           <TrashIcon
             onClick={handleDelete}
-            className="h-6 w-6 text-blue-900">
+            className={
+              isAuthor
+                ? "h-6 w-6 text-blue-900"
+                : "h-6 w-6 text-gray-300 cursor-not-allowed"
+            }>
             delete
           </TrashIcon>
         </div>

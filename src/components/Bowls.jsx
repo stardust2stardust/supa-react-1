@@ -1,13 +1,15 @@
 import BowlCard from "../components/BowlCard";
 import { supabase } from "../supabase/supabaseClient";
 import { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthProvider";
 
 const Bowls = () => {
   const [fetchError, setFetchError] = useState(null);
   const [bowls, setBowls] = useState(null);
   const [isMealTypeSelected, setIsMealTypeSelected] = useState(false);
-  // const [orderBy, setOrderBy] = useState("created_at");
   const [mealSelection, setMealSelection] = useState("");
+
+  const { user } = useAuth();
 
   const handleDelete = (id) => {
     setBowls((prevBowls) => {
@@ -119,6 +121,7 @@ const Bowls = () => {
                 key={bowl.id}
                 bowl={bowl}
                 onDelete={handleDelete}
+                isAuthor={user?.id === bowl.author_id}
               />
             ))}
           </div>

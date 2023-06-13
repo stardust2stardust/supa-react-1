@@ -38,7 +38,6 @@ const NewBowlForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const author_id = user.id;
-    console.log(author_id);
 
     if (!title || !method || ingredients.length === 0 || !meal) {
       setFormError("Please fill in all of the fields.");
@@ -56,7 +55,6 @@ const NewBowlForm = () => {
     }
 
     if (data) {
-      console.log(data);
       setFormError(null);
       navigate("/");
     }

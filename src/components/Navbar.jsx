@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { user, signOut, setUser, setAuth } = useAuth();
-  console.log("user: ", user);
 
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
       const { error } = await signOut();
-      console.log(error);
       setUser(null);
       setAuth(false);
     } catch (error) {

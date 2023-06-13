@@ -12,6 +12,7 @@ const Update = () => {
   const [ingredients, setIngredients] = useState([]);
   const [method, setMethod] = useState("");
   const [meal, setMeal] = useState("");
+  const [authorId, setAuthorId] = useState("");
   const [formError, setFormError] = useState("");
 
   const handleIngredientChange = (index, value) => {
@@ -67,6 +68,7 @@ const Update = () => {
 
       if (error) {
         navigate("/", { replace: true });
+        console.log("error getting data. ");
       }
 
       if (data) {
@@ -74,7 +76,7 @@ const Update = () => {
         setMethod(data.method);
         setIngredients(data.ingredients);
         setMeal(data.meal);
-        console.log(data);
+        setAuthorId(data.author_id);
       }
     };
 
@@ -89,7 +91,8 @@ const Update = () => {
         </div>
       )}
 
-      {user && (
+      {user?.id !== authorId && <p>Only author of the recipe can update it.</p>}
+      {user.id === authorId && (
         <form
           onSubmit={handleSubmit}
           className="mx-auto border-2 border-blue-900 rounded-md w-4/5 flex flex-col gap-4 p-6">
