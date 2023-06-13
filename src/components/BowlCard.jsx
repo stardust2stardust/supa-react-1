@@ -4,7 +4,6 @@ import { supabase } from "../supabase/supabaseClient";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
 const BowlCard = ({ bowl, onDelete, isAuthor }) => {
-  console.log(isAuthor);
   const handleDelete = async () => {
     const { data, error } = await supabase
       .from("bowls")
@@ -17,13 +16,12 @@ const BowlCard = ({ bowl, onDelete, isAuthor }) => {
     }
 
     if (data) {
-      console.log("delete data: ", data);
       onDelete(bowl.id);
     }
   };
 
   return (
-    <div className="border-2 p-3 flex flex-col">
+    <div className="border-2 p-3 flex flex-col bg-gray-50">
       <h3 className="text-xl font-bold text-blue-900">{bowl.title}</h3>
       <div className="text-pink-700">{bowl.ingredients.join(", ")}</div>
       <p>{bowl.method}</p>

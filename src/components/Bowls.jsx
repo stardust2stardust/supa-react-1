@@ -2,6 +2,8 @@ import BowlCard from "../components/BowlCard";
 import { supabase } from "../supabase/supabaseClient";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthProvider";
+import { Link } from "react-router-dom";
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
 
 const Bowls = () => {
   const [fetchError, setFetchError] = useState(null);
@@ -38,7 +40,6 @@ const Bowls = () => {
   }, []);
 
   const handleMealSelection = async (e) => {
-    console.log(e.target.value);
     const { data, error } = await supabase
       .from("bowls")
       .select()
@@ -75,47 +76,49 @@ const Bowls = () => {
   };
 
   return (
-    <div className="p-8">
+    <div className="">
       {fetchError && <p>{fetchError}</p>}
       {bowls && (
-        <div className="flex flex-col mt-5 gap-5">
-          <div className="flex justify-start gap-4">
-            <button
-              value="Breakfast"
-              onClick={handleMealSelection}
-              className="border-2 border-pink-600 text-blue-900 rounded-md px-3 focus:bg-pink-600 focus:text-white">
-              Breakfast
-            </button>
-            <button
-              value="Lunch"
-              onClick={handleMealSelection}
-              className="border-2 border-pink-600 text-blue-900 rounded-md px-3 focus:bg-pink-600 focus:text-white">
-              Lunch
-            </button>
-            <button
-              value="Dinner"
-              onClick={handleMealSelection}
-              className="border-2 border-pink-600 text-blue-900 rounded-md px-3 focus:bg-pink-600 focus:text-white">
-              Dinner
-            </button>
-            <button
-              value="Dessert"
-              onClick={handleMealSelection}
-              className="border-2 border-pink-600 text-blue-900 rounded-md px-3 focus:bg-pink-600 focus:text-white">
-              Dessert
-            </button>
-            {isMealTypeSelected && (
+        <div className="flex flex-col gap-5">
+          <div>
+            <div className="w-full flex justify-between bg-pink-600 ">
               <button
                 onClick={handleShowAllBowls}
-                className="text-pink-600 font-bold">
-                Clear
+                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                All
               </button>
-            )}
+              <button
+                value="Breakfast"
+                onClick={handleMealSelection}
+                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                Breakfast
+              </button>
+              <button
+                value="Lunch"
+                onClick={handleMealSelection}
+                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                Lunch
+              </button>
+              <button
+                value="Dinner"
+                onClick={handleMealSelection}
+                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                Dinner
+              </button>
+              <button
+                value="Dessert"
+                onClick={handleMealSelection}
+                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                Dessert
+              </button>
+            </div>
           </div>
-          <h2 className="text-3xl text-blue-900 font-bold mt-3">
+
+          <h2 className="text-2xl text-blue-900 font-bold text-center mt-3">
             {mealSelection} Bowls
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <div className="px-3 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {bowls.map((bowl) => (
               <BowlCard
                 key={bowl.id}
@@ -124,6 +127,12 @@ const Bowls = () => {
                 isAuthor={user?.id === bowl.author_id}
               />
             ))}
+          </div>
+          <div className="flex flex-col justify-center items-center gap-1">
+            <Link to="/create">
+              <PlusCircleIcon className="w-6 h-6 text-green-700" />
+            </Link>
+            <p>New Bowl</p>
           </div>
         </div>
       )}
