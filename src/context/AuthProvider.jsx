@@ -15,27 +15,47 @@ const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {
-    const { data } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log("event: ", event);
-      console.log("session: ", session);
-      if (event === "SIGNED_IN") {
-        setUser(session.user);
-        console.log("session.user: ", session.user);
-        setAuth(true);
-      } else if (event === "SIGNED_OUT") {
-        setUser(null);
-        console.log("signed out");
-        setAuth(false);
-      }
-    });
+    const getSession = async () => {
+      const { data, error } = await supabase.auth.getSession();
 
-    return () => {
-      data.subscription.unsubscribe();
+      if (error) {
+        console.log("error from get session: ", error);
+      }
+      if (data.session === null) {
+        console.log("user is not signed in");
+        setUser(null);
+        setAuth(false);
+      } else if (data.session) {
+        setUser(data.session.user);
+        setAuth(true);
+      }
     };
+    getSession();
   }, []);
 
+  // useEffect(() => {
+  //   const { data } = supabase.auth.onAuthStateChange((event, session) => {
+  //     console.log("event: ", event);
+  //     console.log("session: ", session);
+  //     if (event === "SIGNED_IN") {
+  //       setUser(session.user);
+  //       console.log("session.user: ", session.user);
+  //       setAuth(true);
+  //     } else if (event === "SIGNED_OUT") {
+  //       setUser(null);
+  //       console.log("signed out");
+  //       setAuth(false);
+  //     }
+  //   });
+
+  //   return () => {
+  //     data.subscription.unsubscribe();
+  //   };
+  // }, []);
+
   return (
-    <AuthContext.Provider value={{ user, auth, login, signOut }}>
+    <AuthContext.Provider
+      value={{ user, auth, login, signOut, setAuth, setUser }}>
       {children}
     </AuthContext.Provider>
   );

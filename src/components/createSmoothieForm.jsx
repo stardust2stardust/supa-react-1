@@ -56,7 +56,7 @@ const createSmoothieForm = () => {
             className="border-2 rounded-md p-1 px-2"
           />
         </div>
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <label htmlFor="rating">Rating:</label>
           <input
             type="number"
@@ -65,7 +65,7 @@ const createSmoothieForm = () => {
             onChange={(e) => setRating(e.target.value)}
             className="border-2 rounded-md p-1 px-2"
           />
-        </div>
+        </div> */}
 
         <button className="my-6 bg-blue-900 text-slate-100 px-3 py-1 rounded-md">
           Submit

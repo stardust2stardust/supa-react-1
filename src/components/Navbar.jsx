@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const { user, signOut } = useAuth();
+  const { user, signOut, setUser, setAuth } = useAuth();
   console.log("user: ", user);
 
   const handleLogout = async (e) => {
@@ -11,6 +11,8 @@ const Navbar = () => {
     try {
       const { error } = await signOut();
       console.log(error);
+      setUser(null);
+      setAuth(false);
     } catch (error) {
       console.log(error);
     }
@@ -24,9 +26,6 @@ const Navbar = () => {
 
       <div className="w-full flex items-center justify-between sticky top-0">
         <div className="flex gap-4">
-          {/* <div>
-            <Link to="/">Home</Link>
-          </div> */}
           <div>
             <Link to="/create">Add Bowl</Link>
           </div>

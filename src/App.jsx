@@ -25,13 +25,14 @@ function App() {
             path="/login"
             element={<Login />}
           />
-          <Route
-            path="/create"
-            element={<Create />}
-          />
 
           {/* Protected Routes */}
           <Route element={<AuthRoute />}>
+            <Route
+              path="/create"
+              element={<Create />}
+            />
+
             <Route
               path="/:id"
               element={<Update />}

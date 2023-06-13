@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase/supabaseClient";
+import { useAuth } from "../context/AuthProvider";
 
 const NewBowlForm = () => {
   const [title, setTitle] = useState("");
@@ -9,6 +10,8 @@ const NewBowlForm = () => {
   const [method, setMethod] = useState("");
   const [meal, setMeal] = useState("");
   const [formError, setFormError] = useState("");
+
+  const { user } = useAuth();
 
   const navigate = useNavigate();
 
@@ -34,6 +37,8 @@ const NewBowlForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const author_id = user.id;
+    console.log(author_id);
 
     if (!title || !method || ingredients.length === 0 || !meal) {
       setFormError("Please fill in all of the fields.");
@@ -43,7 +48,7 @@ const NewBowlForm = () => {
     const { data, error } = await supabase
       .from("bowls")
       // each object is a row in the table
-      .insert([{ title, ingredients, method, meal }])
+      .insert([{ title, ingredients, method, meal, author_id }])
       .select();
 
     if (error) {

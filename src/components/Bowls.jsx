@@ -11,7 +11,7 @@ const Bowls = () => {
 
   const handleDelete = (id) => {
     setBowls((prevBowls) => {
-      return prevBowls.filter((sm) => sm.id !== id);
+      return prevBowls.filter((bowl) => bowl.id !== id);
     });
   };
 

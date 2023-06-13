@@ -9,7 +9,7 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, setUser, setAuth } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +25,11 @@ const Login = () => {
         error,
       } = await login(emailRef.current.value, passwordRef.current.value);
       if (error) setErrorMsg(error.message);
-      if (user && session) navigate("/");
+      if (user && session) {
+        setAuth(true);
+        setUser(user);
+        navigate("/");
+      }
     } catch (error) {
       setErrorMsg("Email or Password Incorrect");
     }
