@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Update from "./pages/Update";
 import AuthRoute from "./components/AuthRoute";
 import Create from "./pages/Create";
+import BowlsList from "./components/BowlsList";
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
           <Route
             path="/login"
             element={<Login />}
+          />
+          <Route
+            path="/bowls"
+            element={<BowlsList />}
           />
 
           {/* Protected Routes */}

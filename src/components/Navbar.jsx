@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const { user, signOut, setUser, setAuth } = useAuth();
   const emailName = user?.email.split("@")[0];
-  // const name = emailName?.[0];
 
   const handleLogout = async (e) => {
     e.preventDefault();

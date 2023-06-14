@@ -1,11 +1,10 @@
-import Bowls from "../components/Bowls";
+import Bowls from "../components/BowlsList";
 import Smoothies from "../components/Smoothies";
 
 const Home = () => {
   return (
     <div>
-      <Bowls />
-      {/* <Smoothies /> */}
+      <h1>HOME PAGE</h1>
     </div>
   );
 };

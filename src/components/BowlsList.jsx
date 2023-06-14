@@ -1,14 +1,13 @@
-import BowlCard from "../components/BowlCard";
+import BowlCard from "./BowlCard";
 import { supabase } from "../supabase/supabaseClient";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 
-const Bowls = () => {
+const BowlsList = () => {
   const [fetchError, setFetchError] = useState(null);
   const [bowls, setBowls] = useState(null);
-  const [isMealTypeSelected, setIsMealTypeSelected] = useState(false);
   const [mealSelection, setMealSelection] = useState("");
 
   const { user } = useAuth();
@@ -81,7 +80,7 @@ const Bowls = () => {
       {bowls && (
         <div className="flex flex-col gap-5">
           <div>
-            <div className="w-full flex justify-between bg-pink-600 ">
+            <div className="w-full flex justify-center bg-pink-600 ">
               <button
                 onClick={handleShowAllBowls}
                 className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
@@ -140,4 +139,4 @@ const Bowls = () => {
   );
 };
 
-export default Bowls;
+export default BowlsList;
