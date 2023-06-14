@@ -23,7 +23,8 @@ const Navbar = () => {
         <Link to="/">
           <h1 className="text-xl">SUPABOWLS</h1>
         </Link>
-        <div className="flex gap-3 items-center">
+
+        <div className="flex flex-col gap-3 items-center">
           {user ? (
             <>
               <span>Hi, {emailName}!</span>
@@ -37,7 +38,7 @@ const Navbar = () => {
           ) : (
             <div className="flex gap-4">
               <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
+              {/* <Link to="/register">Register</Link> */}
             </div>
           )}
         </div>

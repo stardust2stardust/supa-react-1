@@ -37,10 +37,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center ">
+    <div className="flex flex-col items-center">
       <form
         onSubmit={handleSubmit}
-        className="border-2 rounded-md flex flex-col gap-6 w-1/2 mt-10 p-4">
+        className="border-2 rounded-md flex flex-col gap-6 w-4/5 max-w-[400px] mt-20 p-4">
         <div
           id="email"
           className="flex flex-col">
