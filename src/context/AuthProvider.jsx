@@ -7,6 +7,8 @@ export const useAuth = () => useContext(AuthContext);
 
 const signOut = () => supabase.auth.signOut();
 
+const register = (email, password) => supabase.auth.signUp({ email, password });
+
 const login = (email, password) =>
   supabase.auth.signInWithPassword({ email, password });
 
@@ -55,7 +57,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, auth, login, signOut, setAuth, setUser }}>
+      value={{ user, auth, login, signOut, setAuth, setUser, register }}>
       {children}
     </AuthContext.Provider>
   );

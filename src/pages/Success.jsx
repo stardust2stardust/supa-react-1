@@ -1,48 +1,20 @@
-import supabase from "../config/supabaseClient";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Success() {
-  const [user, setUser] = useState([]);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const getSession = async () => {
-      const session = await supabase.auth.getSession();
-      console.log(session);
-      setUser(session?.user);
-    };
-    getSession();
-  }, []);
-
-  useEffect(() => {
-    async function getUserData() {
-      await supabase.auth.getUser().then((value) => {
-        if (value.data?.user) {
-          setUser(value.data.user);
-        }
-      });
-    }
-    getUserData();
-  }, []);
-
-  const avatar = user?.user_metadata?.avatar_url;
-  const userName = user?.user_metadata?.full_Name;
-
-  async function signOutUser() {
-    await supabase.auth.signOut();
-    navigate("/");
-  }
-
   return (
-    <div>
-      <header>
-        <h1>Login Successful</h1>
-        <h2>{userName}</h2>
-        <img src={avatar} />
-        <button onClick={() => signOutUser()}>Sign Out</button>
-      </header>
-    </div>
+    <section className="w-full p-10">
+      <div className="max-w-[400px] mx-auto">
+        <h1 className="text-2xl font-bold">Registration Successful!</h1>
+        <h2 className="text-lg">
+          <Link
+            to={"/login"}
+            className="text-pink-600">
+            Login
+          </Link>{" "}
+          to add your bowl recipes!
+        </h2>
+      </div>
+    </section>
   );
 }
 

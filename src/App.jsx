@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Success from "./pages/Success";
 import Update from "./pages/Update";
 import AuthRoute from "./components/AuthRoute";
 import Create from "./pages/Create";
@@ -25,6 +26,10 @@ function App() {
           <Route
             path="/login"
             element={<Login />}
+          />
+          <Route
+            path="/success"
+            element={<Success />}
           />
           <Route
             path="/bowls"
