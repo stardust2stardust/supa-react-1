@@ -47,7 +47,7 @@ const Register = () => {
     <div className="flex flex-col items-center">
       <form
         onSubmit={handleSubmit}
-        className="border-2 rounded-md flex flex-col gap-6 w-4/5 max-w-[400px] mt-20 p-4">
+        className="bg-stone-100 text-stone-700 rounded-md flex flex-col gap-6 w-4/5 max-w-[400px] mt-20 p-4">
         <div
           id="email"
           className="flex flex-col">
@@ -93,20 +93,19 @@ const Register = () => {
           <button
             disabled={loading}
             type="submit"
-            className="bg-blue-900 text-slate-100 py-1 px-3 rounded-md">
+            className="bg-green-700 text-slate-100 py-1 px-3 rounded-md">
             Sign Up
           </button>
         </div>
+        <div className="w-100 text-center mt-2">
+          Already have an account?{" "}
+          <Link
+            to={"/login"}
+            className="text-red-600">
+            Login
+          </Link>
+        </div>
       </form>
-
-      <div className="w-100 text-center mt-2">
-        Already have an account?{" "}
-        <Link
-          to={"/login"}
-          className="text-pink-600">
-          Login
-        </Link>
-      </div>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import Update from "./pages/Update";
 import AuthRoute from "./components/AuthRoute";
 import Create from "./pages/Create";
 import Bowls from "./pages/Bowls";
+import SingleRecipe from "./pages/SingleRecipe";
 
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
             path="/bowls"
             element={<Bowls />}
           />
+          <Route
+            path="/:id"
+            element={<SingleRecipe />}
+          />
 
           {/* Protected Routes */}
           <Route element={<AuthRoute />}>
@@ -43,10 +48,10 @@ function App() {
               element={<Create />}
             />
 
-            <Route
+            {/* <Route
               path="/:id"
               element={<Update />}
-            />
+            /> */}
           </Route>
         </Routes>
       </Layout>

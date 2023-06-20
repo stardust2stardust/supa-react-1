@@ -35,7 +35,7 @@ const RecentBowls = () => {
   }, []);
 
   return (
-    <section className="w-full bg-green-700 p-8 text-white">
+    <section className="w-full bg-green-700 p-8 text-stone-50">
       <h2 className="text-2xl text-center mb-4">Recently Added </h2>
       {fetchError && <p>{fetchError}</p>}
       {bowls && (
