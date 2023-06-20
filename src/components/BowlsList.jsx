@@ -4,6 +4,13 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import {
+  AllImage,
+  BreakfastImage,
+  LunchImage,
+  DinnerImage,
+  DessertImage,
+} from "../assets/srcSets/imageSrcSets";
 
 const BowlsList = () => {
   const [fetchError, setFetchError] = useState(null);
@@ -52,7 +59,7 @@ const BowlsList = () => {
     if (data) {
       setBowls(data);
       setFetchError(null);
-      setIsMealTypeSelected(true);
+      // setIsMealTypeSelected(true);
       setMealSelection(e.target.value);
     }
   };
@@ -69,55 +76,64 @@ const BowlsList = () => {
     if (data) {
       setBowls(data);
       setFetchError(null);
-      setIsMealTypeSelected(false);
+      // setIsMealTypeSelected(false);
       setMealSelection("All");
     }
   };
 
   return (
-    <div className="">
+    <section className="bg-green-700">
       {fetchError && <p>{fetchError}</p>}
       {bowls && (
         <div className="flex flex-col gap-5">
           <div>
-            <div className="w-full flex justify-center bg-pink-600 ">
+            <div className="w-full flex justify-center bg-orange-200">
               <button
                 onClick={handleShowAllBowls}
-                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                className="text-green-900 px-3 py-2 focus:bg-stone-100">
                 All
               </button>
               <button
                 value="Breakfast"
                 onClick={handleMealSelection}
-                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                className="text-green-900 px-3 py-2 focus:bg-stone-100">
                 Breakfast
               </button>
               <button
                 value="Lunch"
                 onClick={handleMealSelection}
-                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                className="text-green-900 px-3 py-2 focus:bg-stone-100">
                 Lunch
               </button>
               <button
                 value="Dinner"
                 onClick={handleMealSelection}
-                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                className="text-green-900 px-3 py-2 focus:bg-stone-100">
                 Dinner
               </button>
               <button
                 value="Dessert"
                 onClick={handleMealSelection}
-                className="text-white px-3 py-2 focus:bg-gray-100 focus:text-blue-900">
+                className="text-green-900 px-3 py-2 focus:bg-stone-100">
                 Dessert
               </button>
             </div>
+            <div className="w-full relative">
+              <div className="w-full h-full absolute bg-green-900 opacity-60"></div>
+              <div className="w-full h-full text-center text-stone-50 absolute flex flex-col items-center justify-center">
+                <h2 className="text-3xl text-stone-50 font-bold text-center">
+                  {mealSelection} Bowls
+                </h2>
+              </div>
+              {mealSelection === "All" && <AllImage />}
+              {mealSelection === "Breakfast" && <BreakfastImage />}
+              {mealSelection === "Lunch" && <LunchImage />}
+              {mealSelection === "Dinner" && <DinnerImage />}
+              {mealSelection === "Dessert" && <DessertImage />}
+            </div>
           </div>
 
-          <h2 className="text-2xl text-blue-900 font-bold text-center mt-3">
-            {mealSelection} Bowls
-          </h2>
-
-          <div className="px-3 bg-gray-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="px-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {bowls.map((bowl) => (
               <BowlCard
                 key={bowl.id}
@@ -129,13 +145,13 @@ const BowlsList = () => {
           </div>
           <div className="flex flex-col justify-center items-center gap-1">
             <Link to="/create">
-              <PlusCircleIcon className="w-6 h-6 text-green-700" />
+              <PlusCircleIcon className="w-6 h-6 text-stone-50" />
             </Link>
-            <p>New Bowl</p>
+            <p className="text-stone-50">New Bowl</p>
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

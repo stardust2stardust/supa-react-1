@@ -8,11 +8,11 @@ import Success from "./pages/Success";
 import Update from "./pages/Update";
 import AuthRoute from "./components/AuthRoute";
 import Create from "./pages/Create";
-import BowlsList from "./components/BowlsList";
+import Bowls from "./pages/Bowls";
 
 function App() {
   return (
-    <div className="font-nunito bg-gray-100 h-screen">
+    <div className="font-nunito bg-green-700 min-h-screen">
       <Layout>
         <Routes>
           <Route
@@ -33,7 +33,7 @@ function App() {
           />
           <Route
             path="/bowls"
-            element={<BowlsList />}
+            element={<Bowls />}
           />
 
           {/* Protected Routes */}

@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-900 text-slate-100 flex flex-col gap-2 items-center p-4 ">
+    <nav className="bg-green-700 text-slate-100 flex flex-col gap-2 items-center p-4 ">
       <div className="w-full flex items-center justify-between sticky top-0">
         <Link to="/">
           <h1 className="text-xl">SUPABOWLS</h1>

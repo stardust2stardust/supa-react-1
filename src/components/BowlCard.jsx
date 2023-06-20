@@ -21,10 +21,11 @@ const BowlCard = ({ bowl, onDelete, isAuthor }) => {
   };
 
   return (
-    <div className="border-2 p-3 flex flex-col bg-gray-50">
-      <h3 className="text-xl font-bold text-blue-900">{bowl.title}</h3>
-      <div className="text-pink-700">{bowl.ingredients.join(", ")}</div>
-      <p>{bowl.method}</p>
+    <div className="border-2 p-3 flex flex-col bg-stone-100">
+      <h3 className="text-xl font-bold text-stone-700">{bowl.title}</h3>
+      <h4 className="text-lg text-green-600">{bowl.meal}</h4>
+      <div className="text-orange-700">{bowl.ingredients.join(", ")}</div>
+      <p className="text-stone-700">{bowl.method}</p>
       <div className="flex justify-end items-center mt-auto">
         <div className="flex items-center gap-2 ">
           <Link to={"/" + bowl.id}>
