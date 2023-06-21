@@ -17,7 +17,11 @@ const RecentBowls = () => {
 
   useEffect(() => {
     const fetchBowls = async () => {
-      const { data, error } = await supabase.from("bowls").select().limit(4);
+      const { data, error } = await supabase
+        .from("bowls")
+        .select()
+        .order("created_at", { ascending: false })
+        .limit(6);
 
       if (error) {
         setFetchError("Could not fetch the bowls");
@@ -36,18 +40,20 @@ const RecentBowls = () => {
 
   return (
     <section className="w-full bg-green-700 p-8 text-stone-50">
-      <h2 className="text-2xl text-center mb-4">Recently Added </h2>
-      {fetchError && <p>{fetchError}</p>}
-      {bowls && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {bowls.map((bowl) => (
-            <RecentBowlCard
-              key={bowl.id}
-              bowl={bowl}
-            />
-          ))}
-        </div>
-      )}
+      <div className="container mx-auto">
+        <h2 className="text-2xl text-center mb-4">Recently Added </h2>
+        {fetchError && <p>{fetchError}</p>}
+        {bowls && (
+          <div className="max-w-[1024px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {bowls.map((bowl) => (
+              <RecentBowlCard
+                key={bowl.id}
+                bowl={bowl}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   );
 };

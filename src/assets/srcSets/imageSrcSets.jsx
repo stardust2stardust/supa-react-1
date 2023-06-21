@@ -13,7 +13,7 @@ oatmeal-2400x1800_jtoioy_c_scale,w_1349.jpg 1349w,
 oatmeal-2400x1800_jtoioy_c_scale,w_1400.jpg 1400w"
       src="oatmeal-2400x1800_jtoioy_c_scale,w_1400.jpg"
       alt=""
-      className="w-full max-h-[100px] object-cover"
+      className="w-full max-h-[140px] md:max-h-[200px] object-cover"
     />
   );
 };
@@ -33,7 +33,7 @@ salad-2400x1600_f8rqhc_c_scale,w_1378.jpg 1378w,
 salad-2400x1600_f8rqhc_c_scale,w_1400.jpg 1400w"
       src="salad-2400x1600_f8rqhc_c_scale,w_1400.jpg"
       alt=""
-      className="w-full max-h-[100px] object-cover"
+      className="w-full max-h-[140px] md:max-h-[200px] object-cover"
     />
   );
 };
@@ -51,7 +51,7 @@ noodle-bowl-1920x1289_ry5zd3_c_scale,w_1345.jpg 1345w,
 noodle-bowl-1920x1289_ry5zd3_c_scale,w_1400.jpg 1400w"
       src="noodle-bowl-1920x1289_ry5zd3_c_scale,w_1400.jpg"
       alt=""
-      className="w-full max-h-[100px] object-cover"
+      className="w-full max-h-[140px]  md:max-h-[200px] object-cover"
     />
   );
 };
@@ -63,7 +63,7 @@ const AllImage = () => {
       sizes="(max-width: 600px) 400px, (max-width: 1000px) 640px, 1920w"
       src="food-prep-1920w.jpg"
       alt="Food preparation"
-      className="w-full max-h-[100px] object-cover"
+      className="w-full max-h-[140px] md:max-h-[200px] object-cover"
     />
   );
 };
@@ -78,7 +78,7 @@ dessert_qfpfrm_c_scale,w_915.jpg 915w,
 dessert_qfpfrm_c_scale,w_1400.jpg 1400w"
       src="dessert_qfpfrm_c_scale,w_1400.jpg"
       alt=""
-      className="w-full max-h-[100px] object-cover"
+      className="w-full max-h-[140px] md:max-h-[200px] object-cover"
     />
   );
 };

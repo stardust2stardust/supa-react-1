@@ -8,10 +8,10 @@ const Hero = () => {
     <section className="w-full relative">
       <div className="w-full h-full absolute top-0 bg-gradient-to-t from-green-950"></div>
 
-      <div className="w-full text-center text-white absolute inset-x-0 bottom-5 flex flex-col items-center gap-3">
-        <div>
-          <h1 className="text-2xl">Hi {name}!</h1>
-          <p className="text-lg">Looking for a yummy bowl recipe?</p>
+      <div className="w-full text-center text-white absolute inset-x-0 bottom-6 flex flex-col items-center gap-3">
+        <div className="z-10">
+          <h1 className="text-3xl">Hi {name}!</h1>
+          <p className="text-xl">Looking for a yummy bowl recipe?</p>
         </div>
 
         <Link

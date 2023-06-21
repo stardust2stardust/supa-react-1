@@ -56,10 +56,13 @@ const SingleRecipe = () => {
         {meal === "Dinner" && <DinnerImage />}
         {meal === "Dessert" && <DessertImage />}
       </section>
-      <section className="w-full p-8">
-        <div className="bg-stone-100 text-stone-700 flex flex-col gap-4 p-3 rounded-md">
-          <h1 className="text-2xl text-center font-bold">{title}</h1>
-          <h2 className="text-green-600 text-center">{meal}</h2>
+      <section className="w-full p-8 md:p-12">
+        <div className="container mx-auto max-w-[800px] bg-stone-100 text-stone-700 flex flex-col gap-6 p-4 md:p-8 rounded-md">
+          <div>
+            <h1 className="text-2xl text-center font-bold">{title}</h1>
+            <h2 className="text-green-600 text-center">{meal}</h2>
+          </div>
+
           <div>
             <h2 className="font-bold">Ingredients:</h2>
             <ul>

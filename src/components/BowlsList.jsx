@@ -83,67 +83,69 @@ const BowlsList = () => {
 
   return (
     <section className="bg-green-700">
+      <div className="w-full relative">
+        <div className="w-full h-full absolute bg-green-900 opacity-60"></div>
+        <div className="w-full h-full text-center text-stone-50 absolute flex flex-col items-center justify-center">
+          <h2 className="text-4xl md:text-6xl text-stone-50 font-bold text-center">
+            {mealSelection} Bowls
+          </h2>
+        </div>
+        {mealSelection === "All" && <AllImage />}
+        {mealSelection === "Breakfast" && <BreakfastImage />}
+        {mealSelection === "Lunch" && <LunchImage />}
+        {mealSelection === "Dinner" && <DinnerImage />}
+        {mealSelection === "Dessert" && <DessertImage />}
+      </div>
       {fetchError && <p>{fetchError}</p>}
       {bowls && (
         <div className="flex flex-col gap-5">
           <div>
-            <div className="w-full flex justify-center bg-orange-200">
+            <div className="w-full flex justify-center bg-stone-100 md:text-2xl md:gap-4">
               <button
                 onClick={handleShowAllBowls}
-                className="text-green-900 px-3 py-2 focus:bg-stone-100">
+                className="text-green-900 px-3 py-2 md:py-4 focus:bg-green-700 focus:text-stone-100">
                 All
               </button>
               <button
                 value="Breakfast"
                 onClick={handleMealSelection}
-                className="text-green-900 px-3 py-2 focus:bg-stone-100">
+                className="text-green-900 px-3 py-2 md:py-4 focus:bg-green-700 focus:text-stone-100">
                 Breakfast
               </button>
               <button
                 value="Lunch"
                 onClick={handleMealSelection}
-                className="text-green-900 px-3 py-2 focus:bg-stone-100">
+                className="text-green-900 px-3 py-2 md:py-4 focus:bg-green-700 focus:text-stone-100">
                 Lunch
               </button>
               <button
                 value="Dinner"
                 onClick={handleMealSelection}
-                className="text-green-900 px-3 py-2 focus:bg-stone-100">
+                className="text-green-900 px-3 py-2 md:py-4 focus:bg-green-700 focus:text-stone-100">
                 Dinner
               </button>
               <button
                 value="Dessert"
                 onClick={handleMealSelection}
-                className="text-green-900 px-3 py-2 focus:bg-stone-100">
+                className="text-green-900 px-3 py-2 md:py-4 focus:bg-green-700 focus:text-stone-100">
                 Dessert
               </button>
             </div>
-            <div className="w-full relative">
-              <div className="w-full h-full absolute bg-green-900 opacity-60"></div>
-              <div className="w-full h-full text-center text-stone-50 absolute flex flex-col items-center justify-center">
-                <h2 className="text-3xl text-stone-50 font-bold text-center">
-                  {mealSelection} Bowls
-                </h2>
-              </div>
-              {mealSelection === "All" && <AllImage />}
-              {mealSelection === "Breakfast" && <BreakfastImage />}
-              {mealSelection === "Lunch" && <LunchImage />}
-              {mealSelection === "Dinner" && <DinnerImage />}
-              {mealSelection === "Dessert" && <DessertImage />}
+          </div>
+          <section className="w-full p-8 md:px-12">
+            <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {bowls.map((bowl) => (
+                <BowlCard
+                  key={bowl.id}
+                  bowl={bowl}
+                  onDelete={handleDelete}
+                  isAuthor={user?.id === bowl.author_id}
+                />
+              ))}
             </div>
-          </div>
+          </section>
 
-          <div className="px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {bowls.map((bowl) => (
-              <BowlCard
-                key={bowl.id}
-                bowl={bowl}
-                onDelete={handleDelete}
-                isAuthor={user?.id === bowl.author_id}
-              />
-            ))}
-          </div>
-          <div className="flex flex-col justify-center items-center gap-1">
+          <div className="flex flex-col justify-center items-center gap-1 mb-8">
             <Link to="/create">
               <PlusCircleIcon className="w-6 h-6 text-stone-50" />
             </Link>
