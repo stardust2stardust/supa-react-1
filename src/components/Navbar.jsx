@@ -36,11 +36,11 @@ const Navbar = () => {
                 {intial}
               </div>
 
-              {/* <button
+              <button
                 onClick={handleLogout}
                 className="text-sm">
                 Logout
-              </button> */}
+              </button>
             </>
           ) : (
             <div className="flex gap-4">

@@ -2,7 +2,11 @@ import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { supabase } from "../supabase/supabaseClient";
 import { useState, useEffect } from "react";
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
+import {
+  PencilIcon,
+  TrashIcon,
+  ArrowLeftCircleIcon,
+} from "@heroicons/react/24/solid";
 import { useAuth } from "../context/AuthProvider";
 import {
   AllImage,
@@ -66,6 +70,10 @@ const SingleRecipe = () => {
     }
   };
 
+  const handleGoToPreviousPage = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <section className="w-full relative">
@@ -76,6 +84,14 @@ const SingleRecipe = () => {
         {meal === "Dinner" && <DinnerImage />}
         {meal === "Dessert" && <DessertImage />}
       </section>
+      <div className="pt-6 pl-6 text-stone-100 flex items-center gap-2">
+        <ArrowLeftCircleIcon
+          className="w-7 h-7"
+          onClick={handleGoToPreviousPage}
+        />
+
+        <span>back to recipes</span>
+      </div>
       <section className="w-full p-8 md:p-12 bg-green-700">
         <div className="container mx-auto w-[85%] max-w-[600px] bg-stone-100 text-stone-700 flex flex-col gap-6 p-4 md:p-8 rounded-md">
           <div>
