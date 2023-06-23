@@ -48,10 +48,10 @@ function App() {
               element={<Create />}
             />
 
-            {/* <Route
-              path="/:id"
+            <Route
+              path="/edit/:id"
               element={<Update />}
-            /> */}
+            />
           </Route>
         </Routes>
       </Layout>

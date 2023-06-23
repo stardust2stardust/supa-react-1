@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase/supabaseClient";
 import { useAuth } from "../context/AuthProvider";
+import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 
 const Update = () => {
   const { user } = useAuth();
@@ -84,7 +85,7 @@ const Update = () => {
   }, [id, navigate]);
 
   return (
-    <div className="">
+    <div className="bg-green-700 p-8">
       {!user && (
         <div>
           <h2>You must be logged into make edits</h2>
@@ -93,105 +94,120 @@ const Update = () => {
 
       {user?.id !== authorId && <p>Only author of the recipe can update it.</p>}
       {user.id === authorId && (
-        <form
-          onSubmit={handleSubmit}
-          className="mx-auto border-2 border-blue-900 rounded-md w-4/5 flex flex-col gap-4 p-6">
-          <div className="flex flex-col">
-            <label htmlFor="title">Title:</label>
-            <input
-              type="text"
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="border-2 rounded-md p-1 px-2"
-            />
-          </div>
+        <section>
+          <h1 className="text-center text-2xl text-stone-100 mb-4">
+            Update your recipe
+          </h1>
+          <form
+            onSubmit={handleSubmit}
+            className="mx-auto bg-stone-100 text-stone-700 text-lg rounded-md flex flex-col items-center gap-8 w-4/5 max-w-[400px] p-5">
+            <div className="w-full flex flex-col">
+              <label htmlFor="title">Title:</label>
+              <input
+                type="text"
+                id="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="border-2 rounded-md p-1 px-2"
+              />
+            </div>
 
-          <div className="flex flex-col">
-            <h2>Select Meal</h2>
-            <div>
-              <input
-                type="radio"
-                name="meal"
-                value="Breakfast"
-                id="breakfast"
-                onChange={onOptionChange}
-              />
-              <label htmlFor="breakfast">Breakfast</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="meal"
-                value="Lunch"
-                id="lunch"
-                onChange={onOptionChange}
-              />
-              <label htmlFor="lunch">Lunch</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="meal"
-                value="Dinner"
-                id="dinner"
-                onChange={onOptionChange}
-              />
-              <label htmlFor="dinner">Dinner</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="meal"
-                value="Dessert"
-                id="dessert"
-                onChange={onOptionChange}
-              />
-              <label htmlFor="breakfast">Dessert</label>
-            </div>
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="ingredient">Ingredients:</label>
-            {ingredients.map((ingredient, index) => (
-              <div key={index}>
+            <div className="w-full flex flex-col">
+              <h2>Select Meal</h2>
+              <div className="flex gap-1 items-center">
                 <input
-                  type="text"
-                  value={ingredient}
-                  onChange={(e) =>
-                    handleIngredientChange(index, e.target.value)
-                  }
-                  className="border-2 rounded-md p-1 px-2"
+                  type="radio"
+                  name="meal"
+                  value="Breakfast"
+                  id="breakfast"
+                  onChange={onOptionChange}
                 />
+                <label htmlFor="breakfast">Breakfast</label>
+              </div>
+              <div className="flex gap-1 items-center">
+                <input
+                  type="radio"
+                  name="meal"
+                  value="Lunch"
+                  id="lunch"
+                  onChange={onOptionChange}
+                />
+                <label htmlFor="lunch">Lunch</label>
+              </div>
+              <div className="flex gap-1 items-center">
+                <input
+                  type="radio"
+                  name="meal"
+                  value="Dinner"
+                  id="dinner"
+                  onChange={onOptionChange}
+                />
+                <label htmlFor="dinner">Dinner</label>
+              </div>
+              <div className="flex gap-1 items-center">
+                <input
+                  type="radio"
+                  name="meal"
+                  value="Dessert"
+                  id="dessert"
+                  onChange={onOptionChange}
+                />
+                <label htmlFor="breakfast">Dessert</label>
+              </div>
+            </div>
+
+            <div className="w-full flex flex-col">
+              <label htmlFor="ingredient">Ingredients:</label>
+              {ingredients.map((ingredient, index) => (
+                <div
+                  key={index}
+                  className="flex items-center">
+                  <input
+                    type="text"
+                    value={ingredient}
+                    onChange={(e) =>
+                      handleIngredientChange(index, e.target.value)
+                    }
+                    className="border-2 rounded-md p-1 px-2"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveIngredient(index)}>
+                    <MinusCircleIcon className="w-8 h-8 text-red-700" />
+                  </button>
+                </div>
+              ))}
+              <div className="flex gap-1 items-center mt-4">
+                <PlusCircleIcon
+                  onClick={handleAddIngredient}
+                  className="w-8 h-8 text-green-700"
+                />
+
                 <button
                   type="button"
-                  onClick={() => handleRemoveIngredient(index)}>
-                  Remove
+                  onClick={handleAddIngredient}>
+                  Add Ingredient
                 </button>
               </div>
-            ))}
-            <button
-              type="button"
-              onClick={handleAddIngredient}>
-              Add Ingredient
+            </div>
+            <div className="w-full flex flex-col">
+              <label htmlFor="method">Method:</label>
+              <textarea
+                id="method"
+                value={method}
+                onChange={(e) => setMethod(e.target.value)}
+                className="border-2 rounded-md p-1 px-2"
+                rows={8}
+              />
+            </div>
+
+            <button className="my-6 bg-green-700 text-slate-100 px-4 py-2 rounded-md">
+              Submit
             </button>
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="method">Method:</label>
-            <textarea
-              id="method"
-              value={method}
-              onChange={(e) => setMethod(e.target.value)}
-              className="border-2 rounded-md p-1 px-2"
-            />
-          </div>
 
-          <button className="my-6 bg-blue-900 text-slate-100 px-3 py-1 rounded-md">
-            Submit
-          </button>
-
-          {formError && <p className="error">{formError}</p>}
-        </form>
+            {formError && <p className="error">{formError}</p>}
+          </form>
+        </section>
       )}
 
       {/* {user && (
