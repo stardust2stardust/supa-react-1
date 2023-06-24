@@ -100,7 +100,7 @@ const Update = () => {
           </h1>
           <form
             onSubmit={handleSubmit}
-            className="mx-auto bg-stone-100 text-stone-700 text-lg rounded-md flex flex-col items-center gap-8 w-4/5 max-w-[400px] p-5">
+            className="mx-auto bg-stone-100 text-stone-700 text-lg rounded-md flex flex-col items-center gap-8 max-w-[400px] p-5">
             <div className="w-full flex flex-col">
               <label htmlFor="title">Title:</label>
               <input
