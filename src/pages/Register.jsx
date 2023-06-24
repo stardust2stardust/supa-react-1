@@ -56,7 +56,7 @@ const Register = () => {
             type="email"
             ref={emailRef}
             required
-            className="border-2 rounded-md"
+            className="border-2 rounded-md p-2 px-3"
           />
         </div>
         <div
@@ -67,7 +67,7 @@ const Register = () => {
             type="password"
             ref={passwordRef}
             required
-            className="border-2 rounded-md"
+            className="border-2 rounded-md p-2 px-3"
           />
         </div>
         <div
@@ -78,7 +78,7 @@ const Register = () => {
             type="password"
             ref={confirmPasswordRef}
             required
-            className="border-2 rounded-md"
+            className="border-2 rounded-md p-2 px-3"
           />
         </div>
         {errorMsg && (

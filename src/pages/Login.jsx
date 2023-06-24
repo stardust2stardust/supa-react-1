@@ -48,7 +48,7 @@ const Login = () => {
             type="email"
             ref={emailRef}
             required
-            className="border-2 rounded-md border-stone-300"
+            className="border-2 rounded-md border-stone-300 p-2 px-3"
           />
         </div>
         <div
@@ -59,7 +59,7 @@ const Login = () => {
             type="password"
             ref={passwordRef}
             required
-            className="border-2 rounded-md border-stone-300"
+            className="border-2 rounded-md border-stone-300 p-2 px-3"
           />
         </div>
         {errorMsg && (
