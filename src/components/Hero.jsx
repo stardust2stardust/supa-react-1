@@ -16,7 +16,7 @@ const Hero = () => {
 
         <Link
           to="/bowls"
-          className="bg-red-700 px-4 py-1 rounded-2xl">
+          className="bg-amber-400 text-zinc-900 px-4 py-1 rounded-2xl">
           View Recipes
         </Link>
       </div>

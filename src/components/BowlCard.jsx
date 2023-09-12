@@ -21,18 +21,24 @@ const BowlCard = ({ bowl, onDelete, isAuthor }) => {
   };
 
   return (
-    <div className="rounded-md p-3 flex flex-col bg-stone-100">
+    <div className="rounded-md p-4 flex flex-col bg-zinc-50 shadow-md">
       <h3 className="text-xl font-bold text-stone-700">{bowl.title}</h3>
-      <h4 className="text-lg text-green-600">{bowl.meal}</h4>
+      {/* <h4 className="text-lg text-green-600">{bowl.meal}</h4> */}
       {/* <div className="text-orange-700">{bowl.ingredients.join(", ")}</div> */}
+      <div className="w-full relative">
+        <img
+          src={bowl.img}
+          alt={bowl.title}
+          className="w-full  object-cover"
+        />
+        <div className="absolute top-0 right-0 bg-amber-400 p-2 py-1 text-sm">
+          {bowl.meal}
+        </div>
+      </div>
+
       <div className="mt-4 text-stone-600 flex justify-end">
         <Link to={"/" + bowl.id}>{"View recipe >>"}</Link>
       </div>
-      <img
-        src={bowl.img}
-        alt={bowl.title}
-      />
-      <a href={bowl.img}>image</a>
 
       {/* <p className="text-stone-700">{bowl.method}</p> */}
       {/* <div className="flex justify-end items-center mt-auto">

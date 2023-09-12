@@ -30,9 +30,9 @@ const Navbar = () => {
           {user ? (
             <>
               <Link to="/create">
-                <PlusCircleIcon className="w-8 h-8 text-stone-50" />
+                <PlusCircleIcon className="w-8 h-8 text-zinc-900" />
               </Link>
-              <div className="w-7 h-7 flex items-center justify-center bg-stone-50 text-green-700 text-md rounded-full">
+              <div className="w-7 h-7 flex items-center justify-center bg-zinc-900 text-zinc-50 text-md rounded-full">
                 {intial}
               </div>
 

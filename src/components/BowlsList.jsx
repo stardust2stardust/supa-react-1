@@ -91,7 +91,7 @@ const BowlsList = () => {
       <div className="w-full relative">
         <div className="w-full h-full absolute bg-gradient-to-t from-zinc-900"></div>
         <div className="w-full h-full p-6 text-center text-zinc-50 absolute flex flex-col items-center justify-end">
-          <h2 className="text-4xl md:text-6xl text-zinc-50 font-bold text-center">
+          <h2 className="text-4xl md:text-6xl text-amber-400 font-bold text-center">
             {mealSelection} Bowls
           </h2>
         </div>
