@@ -8,13 +8,6 @@ import {
   ArrowLeftCircleIcon,
 } from "@heroicons/react/24/solid";
 import { useAuth } from "../context/AuthProvider";
-import {
-  AllImage,
-  BreakfastImage,
-  LunchImage,
-  DinnerImage,
-  DessertImage,
-} from "../assets/srcSets/imageSrcSets";
 
 const SingleRecipe = () => {
   const { id } = useParams();
@@ -26,6 +19,7 @@ const SingleRecipe = () => {
   const [ingredients, setIngredients] = useState([]);
   const [method, setMethod] = useState("");
   const [meal, setMeal] = useState("");
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     const fetchBowl = async () => {
@@ -46,6 +40,7 @@ const SingleRecipe = () => {
         setIngredients(data.ingredients);
         setMeal(data.meal);
         setAuthorId(data.author_id);
+        setImage(data.img);
       }
     };
 
@@ -76,15 +71,7 @@ const SingleRecipe = () => {
 
   return (
     <>
-      <section className="w-full relative">
-        <div className="w-full h-full absolute bg-green-900 opacity-30"></div>
-        {meal === "All" && <AllImage />}
-        {meal === "Breakfast" && <BreakfastImage />}
-        {meal === "Lunch" && <LunchImage />}
-        {meal === "Dinner" && <DinnerImage />}
-        {meal === "Dessert" && <DessertImage />}
-      </section>
-      <div className="pt-6 pl-6 text-stone-100 flex items-center gap-2">
+      <div className="pt-6 pl-6 text-zinc-900 flex items-center gap-2 cursor-pointer">
         <ArrowLeftCircleIcon
           className="w-7 h-7"
           onClick={handleGoToPreviousPage}
@@ -92,11 +79,14 @@ const SingleRecipe = () => {
 
         <span>back to recipes</span>
       </div>
-      <section className="w-full p-8 md:p-12 bg-green-700">
+      <section className="w-full p-8 md:p-12 bg-zinc-100">
         <div className="container mx-auto w-[85%] max-w-[600px] bg-stone-100 text-stone-700 flex flex-col gap-6 p-4 md:p-8 rounded-md">
+          <img
+            src={image}
+            alt=""
+          />
           <div>
             <h1 className="text-2xl text-center font-bold">{title}</h1>
-            <h2 className="text-green-600 text-center">{meal}</h2>
           </div>
 
           <div>
