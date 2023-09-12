@@ -2,6 +2,7 @@ import RecentBowlCard from "./RecentBowlCard";
 import { supabase } from "../supabase/supabaseClient";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthProvider";
+import BowlCard from "./BowlCard";
 
 const RecentBowls = () => {
   const [fetchError, setFetchError] = useState(null);
@@ -46,7 +47,7 @@ const RecentBowls = () => {
         {bowls && (
           <div className="max-w-[1024px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {bowls.map((bowl) => (
-              <RecentBowlCard
+              <BowlCard
                 key={bowl.id}
                 bowl={bowl}
               />
