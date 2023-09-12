@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     <div>
       <Navbar />
 
-      <main className="h-screen">{children}</main>
+      <main className="h-full bg-zinc-100 text-zinc-900">{children}</main>
     </div>
   );
 };

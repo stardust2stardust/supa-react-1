@@ -1,4 +1,4 @@
-import RecentBowlCard from "./RecentBowlCard";
+// import RecentBowlCard from "./RecentBowlCard";
 import { supabase } from "../supabase/supabaseClient";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthProvider";
@@ -40,7 +40,7 @@ const RecentBowls = () => {
   }, []);
 
   return (
-    <section className="w-full bg-green-700 p-8 text-stone-50">
+    <section className="w-full p-8 text">
       <div className="container mx-auto">
         <h2 className="text-2xl text-center mb-4">Recently Added </h2>
         {fetchError && <p>{fetchError}</p>}

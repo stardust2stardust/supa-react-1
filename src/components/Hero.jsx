@@ -6,7 +6,7 @@ const Hero = () => {
   const name = user?.email.split("@")[0] || "Guest";
   return (
     <section className="w-full relative">
-      <div className="w-full h-full absolute top-0 bg-gradient-to-t from-green-950"></div>
+      <div className="w-full h-full absolute top-0 bg-gradient-to-t from-zinc-950"></div>
 
       <div className="w-full text-center text-white absolute inset-x-0 bottom-6 flex flex-col items-center gap-3">
         <div className="z-10">

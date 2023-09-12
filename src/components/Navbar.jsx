@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-green-700 text-stone-50 flex flex-col gap-2 items-center p-4">
+    <nav className="w-full bg-zinc-100 text-zinc-900 flex flex-col gap-2 items-center p-4">
       <div className="container flex items-center justify-between sticky top-0">
         <Link to="/">
           <h1 className="text-xl font-bold">SUPABOWLS</h1>
