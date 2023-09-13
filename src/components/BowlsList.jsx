@@ -83,12 +83,12 @@ const BowlsList = () => {
   };
 
   return (
-    <section className="">
+    <section>
       <Categories
         handleShowAllBowls={handleShowAllBowls}
         handleMealSelection={handleMealSelection}
       />
-      <div className="w-full h-[140px] md:h-[200px] relative">
+      <div className="w-full max-w-[1300px] h-[140px] md:h-[200px] mx-auto relative">
         <div className="w-full h-[140px] md:h-[200px] absolute bg-gradient-to-t from-zinc-900"></div>
         <div className="w-full h-full p-6 text-center text-zinc-50 absolute flex flex-col items-center justify-end">
           <h2 className="text-4xl md:text-6xl text-amber-400 font-bold text-center">
@@ -106,7 +106,7 @@ const BowlsList = () => {
       {bowls && (
         <div className="">
           <div className="w-full p-8 md:px-12">
-            <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="container mx-auto md:max-w-[1000px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {bowls.map((bowl) => (
                 <BowlCard
                   key={bowl.id}
@@ -120,9 +120,9 @@ const BowlsList = () => {
 
           <div className="flex flex-col justify-center items-center gap-1 mb-8">
             <Link to="/create">
-              <PlusCircleIcon className="w-6 h-6 text-stone-50" />
+              <PlusCircleIcon className="w-6 h-6 text-zinc-900" />
             </Link>
-            <p className="text-stone-50">New Bowl</p>
+            <p className="text-zinc-900">New Bowl</p>
           </div>
         </div>
       )}

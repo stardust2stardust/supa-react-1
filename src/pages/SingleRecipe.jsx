@@ -14,12 +14,13 @@ const SingleRecipe = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const [title, setTitle] = useState("");
-  const [authorId, setAuthorId] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [authorId, setAuthorId] = useState("");
   const [ingredients, setIngredients] = useState([]);
-  const [method, setMethod] = useState("");
-  const [meal, setMeal] = useState("");
-  const [image, setImage] = useState("");
+  // const [method, setMethod] = useState("");
+  // const [meal, setMeal] = useState("");
+  // const [image, setImage] = useState("");
+  const [bowl, setBowl] = useState({});
 
   useEffect(() => {
     const fetchBowl = async () => {
@@ -29,18 +30,20 @@ const SingleRecipe = () => {
         .eq("id", id)
         .single();
 
+      console.log(data);
       if (error) {
         navigate("/", { replace: true });
         console.log("error getting data. ");
       }
 
       if (data) {
-        setTitle(data.title);
-        setMethod(data.method);
+        // setTitle(data.title);
+        // setMethod(data.method);
         setIngredients(data.ingredients);
-        setMeal(data.meal);
-        setAuthorId(data.author_id);
-        setImage(data.img);
+        // setMeal(data.meal);
+        // setAuthorId(data.author_id);
+        // setImage(data.img);
+        setBowl(data);
       }
     };
 
@@ -80,37 +83,37 @@ const SingleRecipe = () => {
         <span>back to recipes</span>
       </div>
       <section className="w-full p-8 md:p-12 bg-zinc-100">
-        <div className="container mx-auto w-[85%] max-w-[600px] bg-stone-100 text-stone-700 flex flex-col gap-6 p-4 md:p-8 rounded-md">
+        <div className="container mx-auto w-[85%] max-w-[600px] text-zinc-900 flex flex-col gap-6 p-4 md:p-8 rounded-md">
           <img
-            src={image}
+            src={bowl.img}
             alt=""
           />
           <div>
-            <h1 className="text-2xl text-center font-bold">{title}</h1>
+            <h1 className="text-3xl text-center font-bold">{bowl.title}</h1>
           </div>
 
           <div>
-            <h2 className="font-bold">Ingredients:</h2>
+            <h2 className="font-bold text-2xl">Ingredients:</h2>
             <ul>
               {ingredients.map((ing) => (
                 <li
                   key={ing}
-                  className="text-orange-700">
+                  className="text-zinc-700">
                   {ing}
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h2 className="font-bold">Instructions:</h2>
-            <p>{method}</p>
+            <h2 className="font-bold text-2xl">Instructions:</h2>
+            <p>{bowl.method}</p>
           </div>
 
           <div className="flex items-center justify-end gap-2 ">
             <Link to={"/edit/" + id}>
               <PencilIcon
                 className={
-                  authorId === user?.id
+                  bowl.authorId === user?.id
                     ? "h-6 w-6 text-blue-900"
                     : "h-6 w-6 text-gray-300 cursor-not-allowed"
                 }>
@@ -120,7 +123,7 @@ const SingleRecipe = () => {
             <TrashIcon
               onClick={handleDelete}
               className={
-                authorId === user?.id
+                bowl.authorId === user?.id
                   ? "h-6 w-6 text-blue-900"
                   : "h-6 w-6 text-gray-300 cursor-not-allowed"
               }>

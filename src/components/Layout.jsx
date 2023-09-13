@@ -5,10 +5,10 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div className="flex flex-col">
       <Navbar />
 
-      <main className="h-full bg-zinc-100 text-zinc-900">{children}</main>
+      <main className="h-full bg-zinc-200 text-zinc-900">{children}</main>
       <Footer />
     </div>
   );
