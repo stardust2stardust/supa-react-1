@@ -64,7 +64,7 @@ const NewBowlForm = () => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="mx-auto bg-stone-100 text-stone-700 text-lg rounded-md flex flex-col items-center gap-8 max-w-[400px] p-5">
+        className="mx-auto bg-zinc-50 text-stone-700 text-lg rounded-md flex flex-col items-center gap-8 max-w-[400px] p-5">
         <div className="w-full flex flex-col">
           <label htmlFor="title">Title:</label>
           <input
@@ -136,7 +136,7 @@ const NewBowlForm = () => {
                 <button
                   type="button"
                   onClick={() => handleRemoveIngredient(index)}>
-                  <MinusCircleIcon className="w-8 h-8 text-red-700" />
+                  <MinusCircleIcon className="w-8 h-8 text-zinc-700" />
                 </button>
               </div>
             </div>
@@ -144,7 +144,7 @@ const NewBowlForm = () => {
           <div className="flex gap-1 items-center mt-4">
             <PlusCircleIcon
               onClick={handleAddIngredient}
-              className="w-8 h-8 text-green-700"
+              className="w-8 h-8 text-amber-500"
             />
 
             <button
@@ -165,7 +165,7 @@ const NewBowlForm = () => {
           />
         </div>
 
-        <button className="my-6 bg-green-700 text-slate-100 px-4 py-2 rounded-md">
+        <button className="my-6 bg-amber-500 text-slate-100 px-4 py-2 rounded-md">
           Submit Recipe
         </button>
 
