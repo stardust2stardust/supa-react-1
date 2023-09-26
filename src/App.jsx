@@ -13,7 +13,7 @@ import SingleRecipe from "./pages/SingleRecipe";
 
 function App() {
   return (
-    <div className="font-nunito min-h-screen">
+    <div className="font-nunito min-h-screen bg-zinc-500">
       <Layout>
         <Routes>
           <Route

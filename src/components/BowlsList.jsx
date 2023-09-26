@@ -88,7 +88,7 @@ const BowlsList = () => {
         handleShowAllBowls={handleShowAllBowls}
         handleMealSelection={handleMealSelection}
       />
-      <div className="w-full max-w-[1300px] h-[140px] md:h-[200px] mx-auto relative">
+      <div className="w-full  h-[140px] md:h-[200px] mx-auto relative">
         <div className="w-full h-[140px] md:h-[200px] absolute bg-gradient-to-t from-zinc-900"></div>
         <div className="w-full h-full p-6 text-center text-zinc-50 absolute flex flex-col items-center justify-end">
           <h2 className="text-4xl md:text-6xl text-amber-400 font-bold text-center">

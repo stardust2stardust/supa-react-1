@@ -39,7 +39,7 @@ const Login = () => {
     <div className="flex flex-col items-center">
       <form
         onSubmit={handleSubmit}
-        className="bg-stone-100 text-stone-700 rounded-md flex flex-col gap-6 w-4/5 max-w-[400px] mt-20 p-4">
+        className="bg-stone-100 text-stone-700 rounded-md flex flex-col gap-6 w-4/5 max-w-[400px] my-20 p-4">
         <div
           id="email"
           className="flex flex-col">

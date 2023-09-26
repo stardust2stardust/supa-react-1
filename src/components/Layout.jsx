@@ -5,10 +5,12 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex flex-col justify-between min-h-[100vh]">
+    <div className="flex flex-col justify-between min-h-[100vh] max-w-[1600px] mx-auto">
       <Navbar />
 
-      <main className="h-full bg-zinc-200 text-zinc-900">{children}</main>
+      <main className="bg-zinc-200 text-zinc-900 min-h-[calc(100vh-108px)]">
+        {children}
+      </main>
       <Footer />
     </div>
   );
